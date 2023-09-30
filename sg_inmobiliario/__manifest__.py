@@ -14,5 +14,6 @@ Los tipos de inmuebles que te permitirá administrar son: ....
         "demo/inmuebles.xml",
         "data/sg_tipo_inmueble.xml",
         "views/sg_inmueble.xml",
+        "views/res_partner.xml"
     ]
 }
