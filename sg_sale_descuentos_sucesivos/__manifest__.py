@@ -4,6 +4,7 @@
         "sale"
     ],
     "data":[
-        "views/sale.xml"
+        "views/sale.xml",
+        "reports/report_saleorder_document.xml"
     ]
 }
