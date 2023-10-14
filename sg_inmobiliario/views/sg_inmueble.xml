@@ -71,10 +71,15 @@
                         <group string="Datos Generales">
                             <field name="street"/>
                             <field name="operation" widget="radio" options="{'horizontal':True}"/>
-                            <field name="user_id"/>
+                            <field name="user_id" 
+                                    readonly="1" 
+                                    groups="sg_inmobiliario.group_inmobiliario_user_own_records,sg_inmobiliario.group_inmobiliario_user,!sg_inmobiliario.group_inmobiliario_admin,!sg_inmobiliario.group_inmobiliario_user_supervisor"
+                                    options="{'no_open':1}"/>
+                            <field name="user_id" groups="sg_inmobiliario.group_inmobiliario_admin,sg_inmobiliario.group_inmobiliario_user_supervisor"/>
                             <field name="company_id" readonly="1" force_save="1" invisible="1"/>
                             <field name="owner_id"/>
                             <field name="codigo_catastral"/>
+                            <field name="codigo_catastral_2"/>
                         </group>
                         <group string="Valor de Propiedad">
                             <field name="currency_id"/>

@@ -15,7 +15,13 @@ class Inmuebles(models.Model):
     _name = "sg.inmueble"
     _description = "Inmuebles"
     
+    #_rec_name = "user_id"
+
     name = fields.Char("Nombre")
+    #nombre = fields.Char("Nombre")
+
+    active = fields.Boolean("Activo",default=True)
+
     tag_ids = fields.Many2many("sg.tag",string="Etiquetas")
     value = fields.Float(string="Valor de propiedad")
     currency_id = fields.Many2one("res.currency",string="Moneda")
@@ -59,6 +65,14 @@ class Inmuebles(models.Model):
             "view_mode":"form",
             "res_id":self.id
         }
+
+    #Sobrecargar metodo write
+    def write(self, values):
+        if "active" in values:
+            if not self.env.user.has_group("sg_inmobiliario.group_inmobiliario_admin"):
+                raise UserError("Solo el administrador puede archivar o desarchivar los inmuebles")
+        res = super(Inmuebles, self).write(values)
+        return  res
 
 
 class Tags(models.Model):
