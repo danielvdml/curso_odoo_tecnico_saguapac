@@ -6,7 +6,8 @@ Los tipos de inmuebles que te permitirá administrar son: ....
     """,
     "author":"Daniel Moreno <daniel@bigodoo.com>",
     "depends":[
-        "base"
+        "base",
+        "mail"
     ],
     "data":[
         "securitic/res.groups.xml",

@@ -14,7 +14,8 @@ class TipoInmueble(models.Model):
 class Inmuebles(models.Model):
     _name = "sg.inmueble"
     _description = "Inmuebles"
-    
+    _inherit = ["mail.thread.cc",
+                "mail.activity.mixin"]
     #_rec_name = "user_id"
 
     name = fields.Char("Nombre")
@@ -25,7 +26,7 @@ class Inmuebles(models.Model):
     tag_ids = fields.Many2many("sg.tag",string="Etiquetas")
     value = fields.Float(string="Valor de propiedad")
     currency_id = fields.Many2one("res.currency",string="Moneda")
-    street = fields.Text(string="Dirección")
+    street = fields.Text(string="Dirección",tracking=True)
     partner_ids = fields.Many2many("res.partner",string="Interesados")
     operation = fields.Selection(selection=[('venta','Venta'),('compra','Compra'),('alquiler','Alquiler')],default="venta")
     image = fields.Binary("Imagen")
