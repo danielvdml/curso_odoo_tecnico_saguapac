@@ -1,0 +1,51 @@
+<odoo>
+    <!-- Action Report -->
+    <record id="action_report_sale_order_custom_1" model="ir.actions.report">
+        <field name="name">Cotización - Tipo 1</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">sg_sale_order_custom_reports.sale_template_1</field>
+        <field name="report_file">sg_sale_order_custom_reports.sale_template_1</field>
+        <field name="print_report_name">'%s' % object.name</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="sg_sale_order_custom_reports.paperformat_a4_custom_sg"/>
+    </record>
+
+    <!-- Template -->
+
+    <template id="sg_sale_order_custom_reports.sale_template_1">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <!--<t t-call="web.external_layout">-->
+                <t t-set="seq" t-value="1"/>
+                <t t-call="sg_sale_order_custom_reports.external_layout_custom_1">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>PU</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="doc.order_line.sorted(key = lambda r:r.name)" t-as="line">
+                                <tr>
+                                    <td><t t-esc="seq"></t></td>
+                                    <td><t t-esc="line.name"/></td>
+                                    <td><t t-esc="line.product_uom_qty"/></td>
+                                    <td><t t-esc="line.price_unit"/></td>
+                                    <td><t t-esc="line.price_total"/></td>
+                                </tr>
+                                <t t-set="seq" t-value="seq+1"/>
+                            </t>
+                        </tbody>
+                    </table>
+                    <t t-esc="doc.saludo(doc.partner_id.name)"/>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

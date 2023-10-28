@@ -1,0 +1,32 @@
+<odoo>
+    <!-- External layout personalizado -->
+    <template id="external_layout_custom_1">
+        <div class="header">
+            <div class="row">
+                <div class="col-3">
+                    <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)" alt="Logo" width="200"/>
+                </div>
+                <div class="col-4">
+                    <div>
+                    Dirección: <span t-field="doc.company_id.street"></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="header_doc_name">
+                        <span>Cotización / Venta</span>
+                        <br/>
+                        <span t-field="doc.name"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="article">
+            <br/>
+            <t t-raw="0"/>
+            <br/>
+        </div>
+        <div class="footer">
+            <span>Esto es el footer</span>
+        </div>
+    </template>
+</odoo>
