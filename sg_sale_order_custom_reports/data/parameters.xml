@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo >
+
+    <record id="footer_page_sale" model="ir.config_parameter">
+        <field name="key">footer_page_sale</field>
+        <field name="value">Términos y condiciones ...</field>
+    </record>
+
+</odoo>

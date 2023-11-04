@@ -43,7 +43,7 @@
                             </t>
                         </tbody>
                     </table>
-                    <t t-esc="doc.saludo(doc.partner_id.name)"/>
+                    <!--<t t-esc="doc.saludo(doc.partner_id.name)"/>-->
                 </t>
             </t>
         </t>

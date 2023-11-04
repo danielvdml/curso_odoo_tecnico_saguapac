@@ -2,6 +2,7 @@
     "name":"Reportes en Ventas",
     "depends":["base","sale"],
     "data":[
+        "views/res_config_settings.xml",
         "data/paperformat.xml",
         "reports/external_layout_sg_custom.xml",
         "reports/report_sale_order.xml"

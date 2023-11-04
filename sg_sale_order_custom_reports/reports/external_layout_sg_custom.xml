@@ -25,8 +25,10 @@
             <t t-raw="0"/>
             <br/>
         </div>
-        <div class="footer">
-            <span>Esto es el footer</span>
+        <div class="footer footer_doc">
+            <t t-if="'footer_page_sale' in doc">
+                <span t-field="doc.footer_page_sale"/>
+            </t>
         </div>
     </template>
 </odoo>
