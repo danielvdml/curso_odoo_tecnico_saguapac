@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="acces_model_sg_helpdesk_report" model="ir.model.access">
+        <field name="name">ir.model sg.helpdesk.report</field>
+        <field name="model_id" ref="sg_ticket_reports.model_sg_helpdesk_report"/>
+        <field name="group_id" ref="helpdesk.group_helpdesk_user"/>
+        <field name="perm_read" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_unlink" eval="True" />
+        <field name="active" eval="True" />
+    </record>
+    
+</odoo>

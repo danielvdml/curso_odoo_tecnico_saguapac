@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pivot_sg_helpdesk_report" model="ir.ui.view">
+        <field name="name">view_pivot_sg_helpdesk_report</field>
+        <field name="model">sg.helpdesk.report</field>
+        <field name="arch" type="xml">
+            <pivot string="Reporte Helpdesk" >
+                <field name="team_id" type="row"/>
+                <field name="employee_id" type="row"/>
+                <field name="unit_amount" type="measure"/>
+                <field name="ticket_create_date" interval="month" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_tree_sg_helpdesk_report" model="ir.ui.view">
+        <field name="name">view_tree_sg_helpdesk_report</field>
+        <field name="model">sg.helpdesk.report</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="team_id"/>            
+                <field name="user_id"/>            
+                <field name="employee_id"/>            
+                <field name="unit_amount"/>            
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_view_sg_helpdesk_report" model="ir.actions.act_window">
+        <field name="name">SG - Reporte Helpdesk</field>
+        <field name="res_model">sg.helpdesk.report</field>
+        <field name="view_mode">pivot,tree</field>
+    </record>
+    
+    <menuitem
+        id="menu_sg_helpdesk_report"
+        name="SG - Reporte Helpdesk"
+        action="action_view_sg_helpdesk_report"
+        parent="helpdesk.helpdesk_ticket_report_menu_main"
+        sequence="35"/>
+
+</odoo>
