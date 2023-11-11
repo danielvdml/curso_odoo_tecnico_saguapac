@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="helpdesk_ticket_view_form_inherit" model="ir.ui.view">
+        <field name="name">helpdesk_ticket_view_form.inherit</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+        <field name="arch" type="xml">
+            <field name="team_id" position="after">
+                <!--<field name="ubicacion_agencia_id" options="{'no_create_edit': True,'no_create':True}"/>-->
+                <field name="ubicacion_agencia_id"/>
+            </field>
+        </field>
+    </record>
+    
+
+</odoo>

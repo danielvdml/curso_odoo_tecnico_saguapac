@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="helpdesk_soporte_page_main" name="Soporte">
+        <t t-call="website.layout">
+            <div class="helpdesk container pt32 pb32">
+                <div class="row">
+                    <h1 class="title">Mis Tickets</h1>
+                </div>
+                <div class="row">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Actividad</th>
+                                <th>Fecha de Creación</th>
+                                <th>Número de Actividad</th>
+                                <th>Cliente</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="tasks" t-as="task">
+                                <tr>
+                                    <td>
+                                        <a t-attf-href="/soporte/#{task.id}"><t t-esc="task.name"/></a>
+                                    </td>
+                                    <td>
+                                        <span t-field="task.create_date"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="task.ticket_ref"/>
+                                    </td>
+                                    <!--<td><span t-esc="task.partner_id.name"/></td>-->
+                                    <td>
+                                        <span t-field="task.partner_id"/>
+                                    </td>
+                                    <!--<td><t t-esc="task.stage_id.name"/></td>-->
+                                    <td>
+                                        <span t-field="task.stage_id"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <img src="/sg_helpdesk_page/static/src/img/fondo_saguapac.jpg" alt="Soporte" style="width:100%"/>
+        </t>
+    </template>
+
+    <template id="helpdesk_soporte_page_create_ticket" name="Nuevo ticket">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h1 class="mb-4">Formulario de Atención al Cliente</h1>
+
+                <form action="/soporte/new" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre" name="name" required="1"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="correo">Correo:</label>
+                        <input type="email" class="form-control" id="correo" name="email" required="1"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="agencia">Agencia:</label>
+                        <select class="form-control" id="agencia" name="agencia" required="1">
+                            <t t-foreach="agencias" t-as="agencia">
+                                <option t-att-value="agencia.id"><t t-esc="agencia.name"/></option>
+                            </t>
+                            <!-- Agrega más opciones según sea necesario -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="asunto">Asunto:</label>
+                        <input type="text" class="form-control" id="asunto" name="asunto" required="1"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descripcion">Descripción de la Solicitud:</label>
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="4" required="1"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="archivos">Adjuntar Archivos:</label>
+                        <input type="file" class="form-control-file" id="archivos" name="archivos[]" multiple="1"/>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <template id="ticket_page" name="Ticket">    
+         <t t-call="website.layout">
+            <div class="container">
+                <div class="row">
+                    <h1 t-field="ticket.name"></h1>
+                </div>
+                <div class="row">
+                    <p t-field="ticket.description"/>
+                </div>
+            </div>
+         </t>
+    </template>
+
+</odoo>
